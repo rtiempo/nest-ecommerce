@@ -1,4 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
 @Controller('products')
-class ProductController {}
+export class ProductController {
+  @Get()
+  getProducts() {
+    return 'All Products';
+  }
+}
