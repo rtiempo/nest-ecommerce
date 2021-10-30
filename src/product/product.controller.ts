@@ -1,24 +1,28 @@
-import { Controller, Get, Post, Put } from '@nestjs/common';
+import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
+import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
 
 @Controller('products')
 export class ProductController {
   @Get()
-  getProducts() {
+  getProducts(): string {
     return 'All Products';
   }
 
   @Get('/:productId')
-  getProductById() {
-    return 'Get Product By Id';
+  getProductById(@Param('productId') productId: string): string {
+    return `Get Product By Id ${productId}`;
   }
 
   @Post()
-  createProduct() {
-    return 'Create Product';
+  createProduct(@Body() body: CreateProductDto): string {
+    return `Create Product ${JSON.stringify(body)}`;
   }
 
   @Put('/:productId')
-  updateProduct() {
-    return 'Update Product By Id';
+  updateProduct(
+    @Param('productId') productId: string,
+    @Body() body: UpdateProductDto,
+  ): string {
+    return `Update Product ${productId} with ${JSON.stringify(body)}`;
   }
 }

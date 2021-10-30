@@ -1,34 +1,36 @@
-import { Controller, Get, Post, Put } from '@nestjs/common';
+import { Controller, Get, Post, Put, Param, Body, Query } from '@nestjs/common';
+import { CreateStoreDto, UpdateStoreDto } from './dto/store.dto';
 
 @Controller('stores')
 export class StoreController {
   @Get()
-  getStores() {
+  getStores(): string {
     return 'All Stores';
   }
 
   @Get('/:storeId')
-  getStoreById() {
-    return 'Get Store By Id';
+  getStoreById(@Param('storeId') storeId: string): string {
+    return `Get Store By Id ${storeId}`;
   }
 
   @Get('/:storeId/search')
-  getStoreProducts() {
-    return 'Get Store Products';
-  }
-
-  @Get('/:storeId/search/:keyword')
-  getStoreProductsByKeyword() {
-    return 'Get Store Products By Keyword';
+  getStoreProducts(
+    @Param('storeId') storeId: string,
+    @Query() sort: object,
+  ): string {
+    return `Get Store ${storeId} Products Sorted By ${JSON.stringify(sort)}`;
   }
 
   @Post()
-  createStore() {
-    return 'Create Store';
+  createStore(@Body() body: CreateStoreDto): string {
+    return `Create Store ${JSON.stringify(body)}`;
   }
 
   @Put('/:storeId')
-  updateStore() {
-    return 'Update Store By Id';
+  updateStore(
+    @Param('storeId') storeId: string,
+    @Body() body: UpdateStoreDto,
+  ): string {
+    return `Update Store ${storeId} with ${JSON.stringify(body)}`;
   }
 }
