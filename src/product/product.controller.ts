@@ -1,28 +1,34 @@
 import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
-import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
+import {
+  CreateProductDto,
+  ProductDto,
+  UpdateProductDto,
+} from './dto/product.dto';
+import { ProductService } from './product.service';
 
 @Controller('products')
 export class ProductController {
+  constructor(private readonly productService: ProductService) {}
   @Get()
-  getProducts(): string {
-    return 'All Products';
+  getProducts(): ProductDto[] {
+    return this.productService.getProducts();
   }
 
   @Get('/:productId')
-  getProductById(@Param('productId') productId: string): string {
-    return `Get Product By Id ${productId}`;
+  getProductById(@Param('productId') productId: string): ProductDto {
+    return this.productService.getProductById(productId);
   }
 
   @Post()
-  createProduct(@Body() body: CreateProductDto): string {
-    return `Create Product ${JSON.stringify(body)}`;
+  createProduct(@Body() body: CreateProductDto): ProductDto {
+    return this.productService.createProduct(body);
   }
 
   @Put('/:productId')
   updateProduct(
     @Param('productId') productId: string,
     @Body() body: UpdateProductDto,
-  ): string {
-    return `Update Product ${productId} with ${JSON.stringify(body)}`;
+  ): ProductDto {
+    return this.productService.updateProduct(body, productId);
   }
 }
