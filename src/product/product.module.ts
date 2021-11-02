@@ -1,26 +1,27 @@
-import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  RequestMethod,
-} from '@nestjs/common';
-import { ValidProductMiddleWare } from 'src/common/middleware/validProduct.middleware';
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { ProductController } from './product.controller';
+import { Product, ProductSchema } from './product.schema';
 import { ProductService } from './product.service';
 
 @Module({
+  imports: [
+    MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
+  ],
   controllers: [ProductController],
   providers: [ProductService],
+  exports: [ProductService],
 })
-export class ProductModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(ValidProductMiddleWare).forRoutes({
-      path: 'products/:productId',
-      method: RequestMethod.GET,
-    });
-    consumer.apply(ValidProductMiddleWare).forRoutes({
-      path: 'products/:productId',
-      method: RequestMethod.PUT,
-    });
-  }
-}
+export class ProductModule {}
+// export class ProductModule implements NestModule {
+//   configure(consumer: MiddlewareConsumer) {
+//     consumer.apply(ValidProductMiddleWare).forRoutes({
+//       path: 'products/:productId',
+//       method: RequestMethod.GET,
+//     });
+//     consumer.apply(ValidProductMiddleWare).forRoutes({
+//       path: 'products/:productId',
+//       method: RequestMethod.PUT,
+//     });
+//   }
+// }

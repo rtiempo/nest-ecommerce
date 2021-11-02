@@ -1,51 +1,42 @@
 import { Injectable } from '@nestjs/common';
-import { products } from 'src/db';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { v4 as uuid } from 'uuid';
-import {
-  CreateProductDto,
-  ProductDto,
-  UpdateProductDto,
-} from './dto/product.dto';
+import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
+import { Product, ProductDocument } from './product.schema';
 
 @Injectable()
 export class ProductService {
-  private products = products;
+  constructor(
+    @InjectModel(Product.name) private readonly model: Model<ProductDocument>,
+  ) {}
 
-  getProducts(): ProductDto[] {
-    return this.products;
+  async findAll(): Promise<Product[]> {
+    return await this.model.find().exec();
   }
 
-  getProductById(productId: string): ProductDto {
-    return this.products.find((product) => {
-      return product.id === productId;
-    });
+  async findOne(productId: string): Promise<Product> {
+    return await this.model.findById(productId).exec();
   }
 
-  createProduct(payload: CreateProductDto): ProductDto {
-    const newProduct = {
-      id: uuid(),
+  async findAllStoreProduct(storeId: string): Promise<Product[]> {
+    return await this.model.find({ store: storeId }).exec();
+  }
+
+  async create(payload: CreateProductDto, keys: string[]): Promise<Product> {
+    return await new this.model({
+      _id: uuid(),
       ...payload,
-    };
-
-    this.products.push(newProduct);
-
-    return newProduct;
+      keys,
+      dateCreated: new Date(),
+    }).save();
   }
 
-  updateProduct(payload: UpdateProductDto, productId: string): ProductDto {
-    let updatedProduct: ProductDto;
-
-    const updatedProductList = this.products.map((product) => {
-      if (product.id === productId) {
-        updatedProduct = {
-          id: productId,
-          ...payload,
-        };
-      } else return product;
-    });
-
-    this.products = updatedProductList;
-
-    return updatedProduct;
+  async update(
+    productId: string,
+    payload: Partial<UpdateProductDto>,
+    keys: string[],
+  ): Promise<Product> {
+    return await this.model.findByIdAndUpdate(productId, payload, keys).exec();
   }
 }

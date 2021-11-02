@@ -1,3 +1,4 @@
+// dummy db before mongodb was added
 export const products = [
   {
     id: '1c25025e-b656-11eb-8529-0242ac130003',

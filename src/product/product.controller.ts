@@ -2,43 +2,47 @@ import {
   Controller,
   Get,
   Post,
-  Put,
   Param,
   Body,
+  Patch,
   ParseUUIDPipe,
 } from '@nestjs/common';
-import {
-  CreateProductDto,
-  ProductDto,
-  UpdateProductDto,
-} from './dto/product.dto';
+import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
+import { Product } from './product.schema';
 import { ProductService } from './product.service';
 
 @Controller('products')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
+
+  @Patch('/:productId')
+  updateProduct(
+    @Param('productId', new ParseUUIDPipe()) productId: string,
+    @Body('name') name: string,
+    @Body() body: UpdateProductDto,
+  ): Promise<Product> {
+    const keys = name.toLowerCase().split(' ');
+    return this.productService.update(productId, body, keys);
+  }
+
   @Get()
-  getProducts(): ProductDto[] {
-    return this.productService.getProducts();
+  getProducts(): Promise<Product[]> {
+    return this.productService.findAll();
   }
 
   @Get('/:productId')
   getProductById(
     @Param('productId', new ParseUUIDPipe()) productId: string,
-  ): ProductDto {
-    return this.productService.getProductById(productId);
+  ): Promise<Product> {
+    return this.productService.findOne(productId);
   }
 
   @Post()
-  createProduct(@Body() body: CreateProductDto): ProductDto {
-    return this.productService.createProduct(body);
-  }
-
-  @Put('/:productId')
-  updateProduct(
-    @Param('productId', new ParseUUIDPipe()) productId: string,
-    @Body() body: UpdateProductDto,
-  ): ProductDto {
-    return this.productService.updateProduct(body, productId);
+  createProduct(
+    @Body() body: CreateProductDto,
+    @Body('name') name: string,
+  ): Promise<Product> {
+    const keys = name.toLowerCase().split(' ');
+    return this.productService.create(body, keys);
   }
 }

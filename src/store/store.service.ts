@@ -1,55 +1,38 @@
 import { Injectable } from '@nestjs/common';
-import { products, stores } from 'src/db';
 import { v4 as uuid } from 'uuid';
-import { ProductDto } from 'src/product/dto/product.dto';
-import { CreateStoreDto, StoreDto, UpdateStoreDto } from './dto/store.dto';
+import { CreateStoreDto, UpdateStoreDto } from './dto/store.dto';
+import { Store, StoreDocument } from './store.schema';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class StoreService {
-  private stores = stores;
-  private products = products;
+  constructor(
+    @InjectModel(Store.name) private readonly model: Model<StoreDocument>,
+  ) {}
 
-  getStores(): StoreDto[] {
-    return this.stores;
+  async findAll(): Promise<Store[]> {
+    return await this.model.find().exec();
   }
 
-  getStoreById(storeId: string): StoreDto {
-    return this.stores.find((store) => {
-      return store.id === storeId;
-    });
+  async findOne(storeId: string): Promise<Store> {
+    return await this.model.findById(storeId).exec();
   }
 
-  getStoreProducts(storeId: string): ProductDto[] {
-    return this.products.filter((product) => {
-      return product.store === storeId;
-    });
-  }
-
-  createStore(payload: CreateStoreDto): StoreDto {
-    const newStore = {
-      id: uuid(),
+  async create(payload: CreateStoreDto, keys: string[]): Promise<Store> {
+    return await new this.model({
+      _id: uuid(),
       ...payload,
-    };
-
-    this.stores.push(newStore);
-
-    return newStore;
+      keys,
+      dateCreated: new Date(),
+    }).save();
   }
 
-  updateStore(payload: UpdateStoreDto, storeId: string): StoreDto {
-    let updatedStore: StoreDto;
-
-    const updatedStoreList = this.stores.map((store) => {
-      if (store.id === storeId) {
-        updatedStore = {
-          id: storeId,
-          ...payload,
-        };
-      } else return store;
-    });
-
-    this.stores = updatedStoreList;
-
-    return updatedStore;
+  async update(
+    storeId: string,
+    payload: Partial<UpdateStoreDto>,
+    keys: string[],
+  ): Promise<Store> {
+    return await this.model.findByIdAndUpdate(storeId, payload, keys).exec();
   }
 }

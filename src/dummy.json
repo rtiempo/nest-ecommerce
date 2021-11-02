@@ -1,0 +1,75 @@
+{
+  "products":[
+    {
+      "name": "Logitech G Pro Wireless",
+      "store": "",
+      "price": 5199.0,
+      "description":
+        "PRO Wireless was designed to be the ultimate gaming mouse for esports professionals. Over a 2 year period, Logitech G collaborated with more than 50 professional players to find the perfect shape, weight and feel combined with our LIGHTSPEED wireless and HERO 25k sensor technologies. The result is a gaming mouse with unrivaled performance and precision, giving you the tools and confidence needed to win.",
+      "stock": 17
+    },
+    {
+      "name": "Keychron K2",
+      "store": "",
+      "price": 3599.99,
+      "description":
+        "K2 is a super tactile wireless or wired keyboard giving you all the keys and function you need while keeping it compact, with the largest battery seen in a mechanical keyboard.",
+      "stock": 21
+    },
+    {
+      "name": "SteelSeries Arctis 7P+ Wireless",
+      "store": "",
+      "price": 10109.99,
+      "description":
+        "The SteelSeries Arctis 7p+ wireless headset is designed specifically for PlayStation 5 with backwards compatibility on PlayStation 4 and other platforms. It uses lossless 2.4 GHz wireless audio for ultra-low latency gaming audio. It has a 24-hour battery life for nonstop gaming, easy on-headset controls, including sidetone, a durable, lightweight steel headband and adjustable elastic ski goggle band, and lossless ultra-low latency wireless connectivity. Named Best Gaming Headset for PS5 by Game Spot.",
+      "stock": 28
+    },
+    {
+      "name": "Glorious GMMK Pro",
+      "store": "",
+      "price": 8195.0,
+      "description":
+        "GMMK Pro is an ultra premium, gasket-mounted 75% layout keyboard built for enthusiasts, gamers, and professionals.",
+      "stock": 26
+    },
+    {
+      "name": "Logitech G502 Lightspeed Wireless",
+      "store": "",
+      "price": 5995.0,
+      "description":
+        "K2 is a super tactile wireless or wired keyboard giving you all the keys and function you need while keeping it compact, with the largest battery seen in a mechanical keyboard.",
+      "stock": 32
+    },
+    {
+      "name": "Glorious Kailh Switches Purple (120pcs)",
+      "store": "",
+      "price": 1850.0,
+      "description": "The heart of any mechanical keyboard. These mechanical switches are manufactured and produced by Kaihua, and are fully compatible with our GMMK & GMMK PRO. Kaihua is the first company to truly innovate over the original Cherry switches, which have traditionally dominated the market.",
+      "stock": 14
+    }
+  ],
+  "stores" : [
+    {
+      "name": "That Time I Got Reincarnated As A Store",
+      "description": "Kaizoku Ou ni Ore wa Naru",
+      "address": "1-chōme-39-16 Matsubara, Setagaya City, Tokyo 156-0043",
+      "email": "reincarnatedasastore@gmail.com",
+      "contact": 9459326193
+    },
+    {
+      "name": "My Shop Cant Be This Cute",
+      "description":
+        "Nico Nico-nii~ Anata no Heart ni Nico Nico-nii, Egao todokeru Yazawa Nico Nico~ Nico-nii te oboeteru Love Nico",
+      "address": "2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025",
+      "email": "cantbethiscute@gmail.com",
+      "contact": 9347104871
+    },
+    {
+      "name": "A Story About A Shark Reincarnated In A Different World Where There Is No Water",
+      "description": "Do you have a minute to talk about our lord and savior Lightning McQueen?! Did you know that Lightning McQueen is the star of several feature films such as Cars, Cars 2, Car 3, Planes: Fire and Rescue, Finding Dory, Toy Story 3, Coco and Ralph breaks the internet? As well as other short film such as Mater and the Ghostlight, Miss Fritter's Racing Skoool, Television program such as Cars Toons, Pixar's Popcorn Cars series voiced by none other than Owen Wilson? He also appears in video games such as Cars: The Video Game, Cars: Radiator Springs Adventures, (not) Kingdom Hearts. Can I interest you in nicknames such as Stinky? He won the Piston Cup.",
+      "address": "3795 Abomachi, Chichibu, Saitama 368-0016",
+      "email": "sharkreincarnated@gmail.com",
+      "contact": 9367124173
+    }
+  ]
+}
