@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Param,
+  Body,
+  ParseUUIDPipe,
+} from '@nestjs/common';
 import {
   CreateProductDto,
   ProductDto,
@@ -15,7 +23,9 @@ export class ProductController {
   }
 
   @Get('/:productId')
-  getProductById(@Param('productId') productId: string): ProductDto {
+  getProductById(
+    @Param('productId', new ParseUUIDPipe()) productId: string,
+  ): ProductDto {
     return this.productService.getProductById(productId);
   }
 
@@ -26,7 +36,7 @@ export class ProductController {
 
   @Put('/:productId')
   updateProduct(
-    @Param('productId') productId: string,
+    @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body() body: UpdateProductDto,
   ): ProductDto {
     return this.productService.updateProduct(body, productId);

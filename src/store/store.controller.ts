@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Param,
+  Body,
+  ParseUUIDPipe,
+} from '@nestjs/common';
 import { ProductDto } from 'src/product/dto/product.dto';
 import { CreateStoreDto, StoreDto, UpdateStoreDto } from './dto/store.dto';
 import { StoreService } from './store.service';
@@ -12,12 +20,16 @@ export class StoreController {
   }
 
   @Get('/:storeId')
-  getStoreById(@Param('storeId') storeId: string): StoreDto {
+  getStoreById(
+    @Param('storeId', new ParseUUIDPipe()) storeId: string,
+  ): StoreDto {
     return this.storeService.getStoreById(storeId);
   }
 
   @Get('/:storeId/search')
-  getStoreProducts(@Param('storeId') storeId: string): ProductDto[] {
+  getStoreProducts(
+    @Param('storeId', new ParseUUIDPipe()) storeId: string,
+  ): ProductDto[] {
     return this.storeService.getStoreProducts(storeId);
   }
 
@@ -28,7 +40,7 @@ export class StoreController {
 
   @Put('/:storeId')
   updateStore(
-    @Param('storeId') storeId: string,
+    @Param('storeId', new ParseUUIDPipe()) storeId: string,
     @Body() body: UpdateStoreDto,
   ): StoreDto {
     return this.storeService.updateStore(body, storeId);
