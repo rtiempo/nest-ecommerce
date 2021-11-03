@@ -1,7 +1,17 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { Product } from 'src/product/product.schema';
 
 export type UserDocument = User & Document;
+
+@Schema()
+class CartItem {
+  @Prop()
+  product: Product;
+
+  @Prop()
+  quantity: number;
+}
 
 @Schema()
 export class User {
@@ -28,6 +38,9 @@ export class User {
 
   @Prop([String])
   addresses: string[];
+
+  @Prop([Object])
+  cart: CartItem[];
 
   @Prop({ required: true })
   dateCreated: Date;

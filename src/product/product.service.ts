@@ -48,4 +48,40 @@ export class ProductService {
       .findByIdAndUpdate(productId, { dateDeleted: new Date() }, { new: true })
       .exec();
   }
+
+  async addVariant(
+    productId: string,
+    variant: { name: string; quantity: number },
+  ): Promise<Product> {
+    return await this.model
+      .findByIdAndUpdate(
+        productId,
+        { $push: { variants: { ...variant } } },
+        { new: true },
+      )
+      .exec();
+  }
+
+  async pullVariant(productId: string, variantName: string): Promise<Product> {
+    return await this.model
+      .findByIdAndUpdate(
+        productId,
+        { $pull: { variants: { name: variantName } } },
+        { new: true },
+      )
+      .exec();
+  }
+
+  async setVariant(
+    productId: string,
+    variant: { name: string; quantity: number },
+  ): Promise<Product> {
+    return await this.model
+      .findByIdAndUpdate(
+        productId,
+        { $set: { variants: { ...variant } } },
+        { new: true },
+      )
+      .exec();
+  }
 }

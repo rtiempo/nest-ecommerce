@@ -55,4 +55,28 @@ export class ProductController {
   ): Promise<Product> {
     return this.productService.delete(productId);
   }
+
+  @Patch(':productId/addVariant')
+  addVariant(
+    @Param('productId', new ParseUUIDPipe()) productId: string,
+    @Body('variant') variant: { name: string; quantity: number },
+  ): Promise<Product> {
+    return this.productService.addVariant(productId, variant);
+  }
+
+  @Patch(':productId/pullVariant')
+  pullVariant(
+    @Param('productId', new ParseUUIDPipe()) productId: string,
+    @Body('variant') variant: string,
+  ): Promise<Product> {
+    return this.productService.pullVariant(productId, variant);
+  }
+
+  @Patch(':productId/setVariant')
+  setVariant(
+    @Param('productId', new ParseUUIDPipe()) productId: string,
+    @Body('variant') variant: { name: string; quantity: number },
+  ): Promise<Product> {
+    return this.productService.setVariant(productId, variant);
+  }
 }

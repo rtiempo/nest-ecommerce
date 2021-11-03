@@ -3,7 +3,6 @@ export class CreateProductDto {
   store: string;
   price: number;
   description: string;
-  stock: number;
 }
 
 export class UpdateProductDto extends CreateProductDto {}

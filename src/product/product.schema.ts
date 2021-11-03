@@ -20,11 +20,11 @@ export class Product {
   @Prop()
   description: string;
 
-  @Prop()
-  stock: number;
-
   @Prop([String])
   keys: string[];
+
+  @Prop([Object])
+  variants: { name: string; stock: number }[];
 
   @Prop([String])
   category: string[];
