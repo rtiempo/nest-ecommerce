@@ -37,6 +37,15 @@ export class ProductService {
     payload: Partial<UpdateProductDto>,
     keys: string[],
   ): Promise<Product> {
-    return await this.model.findByIdAndUpdate(productId, payload, keys).exec();
+    const update = { ...payload, keys: keys };
+    return await this.model
+      .findByIdAndUpdate(productId, update, { new: true })
+      .exec();
+  }
+
+  async delete(productId: string): Promise<Product> {
+    return await this.model
+      .findByIdAndUpdate(productId, { dateDeleted: new Date() }, { new: true })
+      .exec();
   }
 }

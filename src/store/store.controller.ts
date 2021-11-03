@@ -2,10 +2,10 @@ import {
   Controller,
   Get,
   Post,
-  Put,
   Param,
   Body,
   ParseUUIDPipe,
+  Patch,
 } from '@nestjs/common';
 import { Product } from 'src/product/product.schema';
 import { ProductService } from 'src/product/product.service';
@@ -19,6 +19,7 @@ export class StoreController {
     private readonly storeService: StoreService,
     private readonly productService: ProductService,
   ) {}
+
   @Get()
   getStores(): Promise<Store[]> {
     return this.storeService.findAll();
@@ -47,13 +48,23 @@ export class StoreController {
     return this.storeService.create(body, keys);
   }
 
-  @Put('/:storeId')
+  @Patch('/:storeId')
   updateStore(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
     @Body() body: UpdateStoreDto,
     @Body('name') name: string,
   ): Promise<Store> {
-    const keys = name.toLowerCase().split(' ');
+    let keys;
+    if (name) {
+      keys = name.toLowerCase().split(' ');
+    }
     return this.storeService.update(storeId, body, keys);
+  }
+
+  @Patch('/:storeId/delete')
+  deletestore(
+    @Param('storeId', new ParseUUIDPipe()) storeId: string,
+  ): Promise<Store> {
+    return this.storeService.delete(storeId);
   }
 }

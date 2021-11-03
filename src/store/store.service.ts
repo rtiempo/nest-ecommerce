@@ -33,6 +33,15 @@ export class StoreService {
     payload: Partial<UpdateStoreDto>,
     keys: string[],
   ): Promise<Store> {
-    return await this.model.findByIdAndUpdate(storeId, payload, keys).exec();
+    const update = { ...payload, keys: keys };
+    return await this.model
+      .findByIdAndUpdate(storeId, update, { new: true })
+      .exec();
+  }
+
+  async delete(storeId: string): Promise<Store> {
+    return await this.model
+      .findByIdAndUpdate(storeId, { dateDeleted: new Date() }, { new: true })
+      .exec();
   }
 }

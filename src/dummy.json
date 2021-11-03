@@ -71,5 +71,34 @@
       "email": "sharkreincarnated@gmail.com",
       "contact": 9367124173
     }
+  ],
+  "users": [
+    {
+      "name": "Katou Megumi",
+      "contact": 9347104871,
+      "email": "katoumegumi@gmail.com",
+      "password": "katoumegumi",
+      "gender": "Female", 
+      "birthDate": "2000-09-23",
+      "addresses": ["3795 Abomachi, Chichibu, Saitama 368-0016"]
+    },
+    {
+      "name": "Sakurajima Mai",
+      "contact": 9347104871,
+      "email": "sakurajimamai@gmail.com",
+      "password": "sakurajimamai",
+      "gender": "Female",
+      "birthDate": "1999-12-02",
+      "addresses": ["1-chōme-39-16 Matsubara, Setagaya City, Tokyo 156-0043", "2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025"]
+    },
+    {
+      "name": "Azusagawa Sakuta",
+      "contact": 9347104871,
+      "email": "azusagawasakuta@gmail.com",
+      "password": "azusagawasakuta",
+      "gender": "Male",
+      "birthDate": "2000-04-10",
+      "addresses": ["2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025"]
+    }
   ]
 }
