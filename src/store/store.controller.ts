@@ -39,6 +39,11 @@ export class StoreController {
     return this.productService.findAllStoreProduct(storeId);
   }
 
+  @Get()
+  getStoresByKey(@Body('keyword') keyword: string): Promise<Store[]> {
+    return this.storeService.findByKey(keyword);
+  }
+
   @Post()
   createStore(
     @Body() body: CreateStoreDto,

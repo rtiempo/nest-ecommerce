@@ -19,6 +19,11 @@ export class StoreService {
     return await this.model.findById(storeId).exec();
   }
 
+  async findByKey(keyword: string): Promise<Store[]> {
+    const keys = keyword.toLowerCase().split(' ');
+    return await this.model.find({ keys: { $all: { ...keys } } }).exec();
+  }
+
   async create(payload: CreateStoreDto, keys: string[]): Promise<Store> {
     return await new this.model({
       _id: uuid(),

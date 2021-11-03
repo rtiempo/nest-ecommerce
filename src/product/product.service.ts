@@ -19,6 +19,11 @@ export class ProductService {
     return await this.model.findById(productId).exec();
   }
 
+  async findByKey(keyword: string): Promise<Product[]> {
+    const keys = keyword.toLowerCase().split(' ');
+    return await this.model.find({ keys: { $all: { ...keys } } }).exec();
+  }
+
   async findAllStoreProduct(storeId: string): Promise<Product[]> {
     return await this.model.find({ store: storeId }).exec();
   }

@@ -27,6 +27,11 @@ export class ProductController {
     return this.productService.findOne(productId);
   }
 
+  @Get()
+  getProductsByKey(@Body('keyword') keyword: string): Promise<Product[]> {
+    return this.productService.findByKey(keyword);
+  }
+
   @Post()
   createProduct(
     @Body() body: CreateProductDto,
