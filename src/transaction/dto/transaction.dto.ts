@@ -7,4 +7,5 @@ export class CreateTransactiontDto {
 export class UpdateTransactionDto {
   status: string;
   paid: boolean;
+  dateCompleted: Date;
 }

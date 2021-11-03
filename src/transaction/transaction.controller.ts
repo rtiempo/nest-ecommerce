@@ -5,10 +5,10 @@ import {
   Param,
   ParseUUIDPipe,
   Patch,
-  Post,
 } from '@nestjs/common';
 import { Transaction } from './transaction.schema';
 import { TransactionService } from './transaction.service';
+import { UpdateTransactionDto } from './dto/transaction.dto';
 
 @Controller('transactions')
 export class TransactionController {
@@ -26,23 +26,11 @@ export class TransactionController {
     return this.transactionService.findOne(transactionId);
   }
 
-  // @Post()
-  // createTransactions(
-  //   @Body() body: CreateTransactiontDto,
-  // ): Promise<Transaction> {
-  //   return this.transactionService.create(body);
-  // }
-
-  // @Patch('/:TransactionsId')
-  // updateTransactions(
-  //   @Param('TransactionsId', new ParseUUIDPipe()) TransactionsId: string,
-  //   @Body('name') name: string,
-  //   @Body() body: UpdateTransactionsDto,
-  // ): Promise<Transaction> {
-  //   let keys;
-  //   if (name) {
-  //     keys = name.toLowerCase().split(' ');
-  //   }
-  //   return this.transactionsService.update(TtansactionsId, body, keys);
-  // }
+  @Patch('/:transactionId')
+  updateTransactions(
+    @Param('transactionId', new ParseUUIDPipe()) transactionId: string,
+    @Body() body: UpdateTransactionDto,
+  ): Promise<Transaction> {
+    return this.transactionService.update(transactionId, body);
+  }
 }
