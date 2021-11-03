@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { SHA1 } from 'crypto-js';
 import { Model } from 'mongoose';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
-import { User, UserDocument } from './user.schema';
+import { CartItem, User, UserDocument } from './user.schema';
 
 @Injectable()
 export class UserService {
@@ -36,6 +36,33 @@ export class UserService {
   async delete(userId: string): Promise<User> {
     return await this.model
       .findByIdAndUpdate(userId, { dateDeleted: new Date() }, { new: true })
+      .exec();
+  }
+
+  async pushToCart(userId: string, payload: CartItem): Promise<User> {
+    console.log({ ...payload });
+    return await this.model
+      .findByIdAndUpdate(
+        userId,
+        { $push: { cart: { ...payload } } },
+        { new: true },
+      )
+      .exec();
+  }
+
+  async pullFromCart(userId: string, productId: string): Promise<User> {
+    return await this.model
+      .findByIdAndUpdate(
+        userId,
+        { $pull: { cart: { productId: productId } } },
+        { new: true },
+      )
+      .exec();
+  }
+
+  async emptyCart(userId: string): Promise<User> {
+    return await this.model
+      .findByIdAndUpdate(userId, { cart: [] }, { new: true })
       .exec();
   }
 }

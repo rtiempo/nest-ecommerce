@@ -54,7 +54,7 @@ export class ProductService {
       .exec();
   }
 
-  async addVariant(
+  async pushVariant(
     productId: string,
     variant: { name: string; quantity: number },
   ): Promise<Product> {

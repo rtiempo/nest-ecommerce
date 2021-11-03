@@ -11,7 +11,7 @@ import { CreateTransactiontDto } from 'src/transaction/dto/transaction.dto';
 import { Transaction } from 'src/transaction/transaction.schema';
 import { TransactionService } from 'src/transaction/transaction.service';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
-import { User } from './user.schema';
+import { CartItem, User } from './user.schema';
 import { UserService } from './user.service';
 
 @Controller('users')
@@ -62,5 +62,21 @@ export class UserController {
     @Param('userId', new ParseUUIDPipe()) userId: string,
   ): Promise<User> {
     return this.userService.delete(userId);
+  }
+
+  @Patch('/:userId/pushToCart')
+  pushToCart(
+    @Param('userId', new ParseUUIDPipe()) userId: string,
+    @Body('item') item: CartItem,
+  ): Promise<User> {
+    return this.userService.pushToCart(userId, item);
+  }
+
+  @Patch('/:userId/pullFromCart')
+  pullFromCart(
+    @Param('userId', new ParseUUIDPipe()) userId: string,
+    @Body('productId') productId: string,
+  ): Promise<User> {
+    return this.userService.pullFromCart(userId, productId);
   }
 }

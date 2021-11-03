@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { UserService } from 'src/user/user.service';
 import { v4 as uuid } from 'uuid';
 import {
   CreateTransactiontDto,
@@ -13,6 +14,7 @@ export class TransactionService {
   constructor(
     @InjectModel(Transaction.name)
     private readonly model: Model<TransactionDocument>,
+    private readonly userService: UserService,
   ) {}
 
   async findAll(): Promise<Transaction[]> {
@@ -30,6 +32,7 @@ export class TransactionService {
     const total = payload.cart.reduce((total, item) => {
       return total + item.unitPrice * item.quantity;
     }, 0);
+    this.userService.emptyCart(userId);
     return await new this.model({
       _id: uuid(),
       userId: userId,

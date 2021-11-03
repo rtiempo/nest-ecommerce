@@ -61,15 +61,15 @@ export class ProductController {
     return this.productService.delete(productId);
   }
 
-  @Patch(':productId/addVariant')
-  addVariant(
+  @Patch('/:productId/addVariant')
+  pushVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body('variant') variant: { name: string; quantity: number },
   ): Promise<Product> {
-    return this.productService.addVariant(productId, variant);
+    return this.productService.pushVariant(productId, variant);
   }
 
-  @Patch(':productId/pullVariant')
+  @Patch('/:productId/pullVariant')
   pullVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body('variant') variant: string,
@@ -77,7 +77,7 @@ export class ProductController {
     return this.productService.pullVariant(productId, variant);
   }
 
-  @Patch(':productId/setVariant')
+  @Patch('/:productId/setVariant')
   setVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body('variant') variant: { name: string; quantity: number },
