@@ -1,13 +1,18 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { Product } from 'src/product/product.schema';
 
 export type UserDocument = User & Document;
 
 @Schema()
-class CartItem {
+export class CartItem {
   @Prop()
-  product: Product;
+  productId: string;
+
+  @Prop()
+  productVariant: string;
+
+  @Prop()
+  unitPrice: number;
 
   @Prop()
   quantity: number;

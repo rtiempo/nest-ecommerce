@@ -5,47 +5,41 @@
       "store": "",
       "price": 5199.0,
       "description":
-        "PRO Wireless was designed to be the ultimate gaming mouse for esports professionals. Over a 2 year period, Logitech G collaborated with more than 50 professional players to find the perfect shape, weight and feel combined with our LIGHTSPEED wireless and HERO 25k sensor technologies. The result is a gaming mouse with unrivaled performance and precision, giving you the tools and confidence needed to win.",
-      "stock": 17
+        "PRO Wireless was designed to be the ultimate gaming mouse for esports professionals. Over a 2 year period, Logitech G collaborated with more than 50 professional players to find the perfect shape, weight and feel combined with our LIGHTSPEED wireless and HERO 25k sensor technologies. The result is a gaming mouse with unrivaled performance and precision, giving you the tools and confidence needed to win."
     },
     {
       "name": "Keychron K2",
       "store": "",
       "price": 3599.99,
       "description":
-        "K2 is a super tactile wireless or wired keyboard giving you all the keys and function you need while keeping it compact, with the largest battery seen in a mechanical keyboard.",
-      "stock": 21
+        "K2 is a super tactile wireless or wired keyboard giving you all the keys and function you need while keeping it compact, with the largest battery seen in a mechanical keyboard."
     },
     {
       "name": "SteelSeries Arctis 7P+ Wireless",
       "store": "",
       "price": 10109.99,
       "description":
-        "The SteelSeries Arctis 7p+ wireless headset is designed specifically for PlayStation 5 with backwards compatibility on PlayStation 4 and other platforms. It uses lossless 2.4 GHz wireless audio for ultra-low latency gaming audio. It has a 24-hour battery life for nonstop gaming, easy on-headset controls, including sidetone, a durable, lightweight steel headband and adjustable elastic ski goggle band, and lossless ultra-low latency wireless connectivity. Named Best Gaming Headset for PS5 by Game Spot.",
-      "stock": 28
+        "The SteelSeries Arctis 7p+ wireless headset is designed specifically for PlayStation 5 with backwards compatibility on PlayStation 4 and other platforms. It uses lossless 2.4 GHz wireless audio for ultra-low latency gaming audio. It has a 24-hour battery life for nonstop gaming, easy on-headset controls, including sidetone, a durable, lightweight steel headband and adjustable elastic ski goggle band, and lossless ultra-low latency wireless connectivity. Named Best Gaming Headset for PS5 by Game Spot."
     },
     {
       "name": "Glorious GMMK Pro",
       "store": "",
       "price": 8195.0,
       "description":
-        "GMMK Pro is an ultra premium, gasket-mounted 75% layout keyboard built for enthusiasts, gamers, and professionals.",
-      "stock": 26
+        "GMMK Pro is an ultra premium, gasket-mounted 75% layout keyboard built for enthusiasts, gamers, and professionals."
     },
     {
       "name": "Logitech G502 Lightspeed Wireless",
       "store": "",
       "price": 5995.0,
       "description":
-        "K2 is a super tactile wireless or wired keyboard giving you all the keys and function you need while keeping it compact, with the largest battery seen in a mechanical keyboard.",
-      "stock": 32
+        "K2 is a super tactile wireless or wired keyboard giving you all the keys and function you need while keeping it compact, with the largest battery seen in a mechanical keyboard."
     },
     {
       "name": "Glorious Kailh Switches Purple (120pcs)",
       "store": "",
       "price": 1850.0,
-      "description": "The heart of any mechanical keyboard. These mechanical switches are manufactured and produced by Kaihua, and are fully compatible with our GMMK & GMMK PRO. Kaihua is the first company to truly innovate over the original Cherry switches, which have traditionally dominated the market.",
-      "stock": 14
+      "description": "The heart of any mechanical keyboard. These mechanical switches are manufactured and produced by Kaihua, and are fully compatible with our GMMK & GMMK PRO. Kaihua is the first company to truly innovate over the original Cherry switches, which have traditionally dominated the market."
     }
   ],
   "stores" : [
@@ -99,6 +93,20 @@
       "gender": "Male",
       "birthDate": "2000-04-10",
       "addresses": ["2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025"]
+    }
+  ],
+  "cartItems": [
+    {
+      "productId": "68279408-3329-4207-aa82-b453a45b254a",
+      "productVariant": "standard",
+      "unitPrice": 5199,
+      "quantity": 2
+    },
+    {
+      "productId": "e5cea584-f930-4bf9-b385-aefefeb272b3",
+      "productVariant": "standard",
+      "unitPrice": 3599.99,
+      "quantity": 2
     }
   ]
 }

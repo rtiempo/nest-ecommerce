@@ -7,13 +7,19 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { CreateTransactiontDto } from 'src/transaction/dto/transaction.dto';
+import { Transaction } from 'src/transaction/transaction.schema';
+import { TransactionService } from 'src/transaction/transaction.service';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
 import { User } from './user.schema';
 import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly transactionService: TransactionService,
+  ) {}
 
   @Get()
   getProducts(): Promise<User[]> {
@@ -33,6 +39,14 @@ export class UserController {
     @Body('password') pass: string,
   ): Promise<User> {
     return this.userService.create(body, pass);
+  }
+
+  @Post('/:userId/checkout')
+  checkout(
+    @Param('userId', new ParseUUIDPipe()) userId: string,
+    @Body() body: CreateTransactiontDto,
+  ): Promise<Transaction> {
+    return this.transactionService.create(userId, body);
   }
 
   @Patch('/:userId')
