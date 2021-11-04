@@ -26,26 +26,40 @@
 
 ## Getting Started
 
-```bash
-# clone the project
+1. clone the project
+
+```sh
 git clone  https://github.com/rtiempo/nest-ecommerce.git
+```
 
-# cd into the directory
+2. cd into the directory
+
+```sh
 cd nest-ecommerce
+```
 
-# install dependencies
+3. install dependencies
+
+```sh
 npm install
 ```
 
 ## Running the app
 
-```bash
-# development
+Development
+
+```sh
 npm run start
+```
 
-# watch mode
+Watch Mode
+
+```sh
 npm run start:dev
+```
 
-# production mode
+Production Mode
+
+```sh
 npm run start:prod
 ```
