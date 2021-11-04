@@ -64,7 +64,7 @@ export class ProductController {
   @Patch('/:productId/addVariant')
   pushVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
-    @Body('variant') variant: { name: string; quantity: number },
+    @Body('variant') variant: { name: string; stock: number },
   ): Promise<Product> {
     return this.productService.pushVariant(productId, variant);
   }
@@ -80,7 +80,7 @@ export class ProductController {
   @Patch('/:productId/setVariant')
   setVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
-    @Body('variant') variant: { name: string; quantity: number },
+    @Body('variant') variant: { name: string; stock: number },
   ): Promise<Product> {
     return this.productService.setVariant(productId, variant);
   }

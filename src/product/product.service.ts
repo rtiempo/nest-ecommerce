@@ -56,7 +56,7 @@ export class ProductService {
 
   async pushVariant(
     productId: string,
-    variant: { name: string; quantity: number },
+    variant: { name: string; stock: number },
   ): Promise<Product> {
     return await this.model
       .findByIdAndUpdate(
@@ -79,7 +79,7 @@ export class ProductService {
 
   async setVariant(
     productId: string,
-    variant: { name: string; quantity: number },
+    variant: { name: string; stock: number },
   ): Promise<Product> {
     return await this.model
       .findByIdAndUpdate(
