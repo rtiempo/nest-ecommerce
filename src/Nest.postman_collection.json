@@ -1,0 +1,865 @@
+{
+	"info": {
+		"_postman_id": "484e2e9d-fec8-4a3c-a51b-a0aab5a010e0",
+		"name": "Nest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "variant",
+					"item": [
+						{
+							"name": "/products/:productId/pushVariant",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"variant\": { \"name\": \"standard\", \"stock\": 25 }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/products/e5cea584-f930-4bf9-b385-aefefeb272b3/addVariant",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"products",
+										"e5cea584-f930-4bf9-b385-aefefeb272b3",
+										"addVariant"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/products/:productId/pullVariant",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"variant\": \"black\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/products/e5cea584-f930-4bf9-b385-aefefeb272b3/pullVariant",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"products",
+										"e5cea584-f930-4bf9-b385-aefefeb272b3",
+										"pullVariant"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/products/:productId/setVariant",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"variant\": { \"name\": \"standard\", \"stock\": 28 }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/products/e5cea584-f930-4bf9-b385-aefefeb272b3/setVariant",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"products",
+										"e5cea584-f930-4bf9-b385-aefefeb272b3",
+										"setVariant"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:productId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products/68279408-3329-4207-aa82-b453a45b254a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"68279408-3329-4207-aa82-b453a45b254a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products (search by key)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"keyword\": \"G Pro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Glorious Kailh Switches Purple (120pcs)\",\r\n    \"store\": \"068bbaa4-5ce6-4a02-a267-8a6a14cab7c0\",\r\n    \"price\": 1850.0,\r\n    \"description\": \"The heart of any mechanical keyboard. These mechanical switches are manufactured and produced by Kaihua, and are fully compatible with our GMMK & GMMK PRO. Kaihua is the first company to truly innovate over the original Cherry switches, which have traditionally dominated the market.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:productId",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"variants\": [{\"name\": \"standard\", \"stock\": 22}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/1481faa6-fdac-4f62-bccf-945fd92fb4db",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"1481faa6-fdac-4f62-bccf-945fd92fb4db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:productId/delete",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products/68279408-3329-4207-aa82-b453a45b254a/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"68279408-3329-4207-aa82-b453a45b254a",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stores",
+			"item": [
+				{
+					"name": "/stores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/stores/:storeId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/stores/39b462ba-e1d6-4985-b2bf-c5c302d0c8d7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores",
+								"39b462ba-e1d6-4985-b2bf-c5c302d0c8d7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/store/:storeId/transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/stores/39b462ba-e1d6-4985-b2bf-c5c302d0c8d7/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores",
+								"39b462ba-e1d6-4985-b2bf-c5c302d0c8d7",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/stores (search by key) Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"keyword\": \"Reincarnated Store\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/stores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"A Story About A Shark Reincarnated In A Different World Where There Is No Water\",\r\n    \"description\": \"Do you have a minute to talk about our lord and savior Lightning McQueen?! Did you know that Lightning McQueen is the star of several feature films such as Cars, Cars 2, Car 3, Planes: Fire and Rescue, Finding Dory, Toy Story 3, Coco and Ralph breaks the internet? As well as other short film such as Mater and the Ghostlight, Miss Fritter's Racing Skoool, Television program such as Cars Toons, Pixar's Popcorn Cars series voiced by none other than Owen Wilson? He also appears in video games such as Cars: The Video Game, Cars: Radiator Springs Adventures, (not) Kingdom Hearts. Can I interest you in nicknames such as Stinky? He won the Piston Cup.\",\r\n    \"address\": \"3795 Abomachi, Chichibu, Saitama 368-0016\",\r\n    \"email\": \"sharkreincarnated@gmail.com\",\r\n    \"contact\": 9367124173\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/stores/:storeId",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": { \r\n        \"address\": \"2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025\", \r\n        \"location\": { \r\n            \"type\": \"Point\", \r\n            \"coordinates\": [35.6321, 139.7975] \r\n        } \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/stores/548222c8-eeba-4c4c-996e-3d1093c5a7ce",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores",
+								"548222c8-eeba-4c4c-996e-3d1093c5a7ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/stores/:storeId/delete",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/stores/4e261as6-5w91ja41/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores",
+								"4e261as6-5w91ja41",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "carts",
+					"item": [
+						{
+							"name": "/users/:userId/pullFromCart",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"68279408-3329-4207-aa82-b453a45b254a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/21747a8b-6694-475a-9ef1-9704a9138740/pullFromCart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"21747a8b-6694-475a-9ef1-9704a9138740",
+										"pullFromCart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/users/:userId/pushToCart Copy",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item\": {\r\n        \"productId\": \"68279408-3329-4207-aa82-b453a45b254a\",\r\n        \"productVariant\": \"standard\",\r\n        \"store\": \"39b462ba-e1d6-4985-b2bf-c5c302d0c8d7\",\r\n        \"unitPrice\": 5199,\r\n        \"quantity\": 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/21747a8b-6694-475a-9ef1-9704a9138740/pushToCart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"21747a8b-6694-475a-9ef1-9704a9138740",
+										"pushToCart"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "addresses",
+					"item": [
+						{
+							"name": "/users/:addressId/pushAddress",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"address\": \"2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025\", \r\n    \"location\": { \r\n        \"type\": \"Point\", \r\n        \"coordinates\": [35.6321, 139.7975] \r\n    } \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/68fe523c-f1c8-4055-b896-67a69b151356/addAddress",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"68fe523c-f1c8-4055-b896-67a69b151356",
+										"addAddress"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/users/:addressId/pullAddress",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": \"1-chōme-39-16 Matsubara, Setagaya City, Tokyo 156-0043\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/68279408-3329-4207-aa82-b453a45b254a/pullAddress",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"68279408-3329-4207-aa82-b453a45b254a",
+										"pullAddress"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/users/:addressId/setAddress",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": { \r\n        \"address\": \"2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025\", \r\n        \"location\": { \r\n            \"type\": \"Point\", \r\n            \"coordinates\": [-35.6321, 139.7975] \r\n        } \r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/68fe523c-f1c8-4055-b896-67a69b151356/setAddress",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"68fe523c-f1c8-4055-b896-67a69b151356",
+										"setAddress"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:userId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/68279408-3329-4207-aa82-b453a45b254a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"68279408-3329-4207-aa82-b453a45b254a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:userId/transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/21747a8b-6694-475a-9ef1-9704a9138740/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"21747a8b-6694-475a-9ef1-9704a9138740",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Katou Megumi\",\r\n    \"contact\": 9347104871,\r\n    \"email\": \"katoumegumi@gmail.com\",\r\n    \"password\": \"katoumegumi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:userId/checkout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart\": [\r\n        {\r\n            \"productId\": \"68279408-3329-4207-aa82-b453a45b254a\",\r\n            \"productVariant\": \"standard\",\r\n            \"store\": \"39b462ba-e1d6-4985-b2bf-c5c302d0c8d7\",\r\n            \"unitPrice\": 5199,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": \"e5cea584-f930-4bf9-b385-aefefeb272b3\",\r\n            \"productVariant\": \"standard\",\r\n            \"store\": \"39b462ba-e1d6-4985-b2bf-c5c302d0c8d7\",\r\n            \"unitPrice\": 3599.99,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/21747a8b-6694-475a-9ef1-9704a9138740/checkout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"21747a8b-6694-475a-9ef1-9704a9138740",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:userId",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addresses\": [\r\n        { \r\n            \"address\": \"2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025\", \r\n            \"location\": { \r\n                \"type\": \"Point\", \r\n                \"coordinates\": [35.6321, 139.7975] \r\n            } \r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/21747a8b-6694-475a-9ef1-9704a9138740",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"21747a8b-6694-475a-9ef1-9704a9138740"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/:userId/delete",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/eeb5a7d3-908a-44bd-9329-e49ab9346b68/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"eeb5a7d3-908a-44bd-9329-e49ab9346b68",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "/transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/transactions/:transactionId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/transactions/18269518-7169-4300-b1c4-51057135e242",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transactions",
+								"18269518-7169-4300-b1c4-51057135e242"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/transactions/:transactionId",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"Received\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/transactions/18269518-7169-4300-b1c4-51057135e242",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transactions",
+								"18269518-7169-4300-b1c4-51057135e242"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

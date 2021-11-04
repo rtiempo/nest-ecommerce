@@ -6,7 +6,6 @@ import { ProductService } from 'src/product/product.service';
 export class EnoughStockMiddleWare implements NestMiddleware {
   constructor(private readonly productService: ProductService) {}
   async use(req: Request, res: Response, next: NextFunction) {
-    console.log('uwu');
     const payload = req.body.item;
     const product = await this.productService.findOne(payload.productId);
     const index = product.variants
