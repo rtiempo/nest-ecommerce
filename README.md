@@ -24,21 +24,28 @@
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
 
-## Installation
+## Getting Started
 
 ```bash
-$ npm install
+# clone the project
+git clone  https://github.com/rtiempo/nest-ecommerce.git
+
+# cd into the directory
+cd nest-ecommerce
+
+# install dependencies
+npm install
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
