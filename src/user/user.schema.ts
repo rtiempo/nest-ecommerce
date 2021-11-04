@@ -12,6 +12,9 @@ export class CartItem {
   productVariant: string;
 
   @Prop()
+  store: string;
+
+  @Prop()
   unitPrice: number;
 
   @Prop()

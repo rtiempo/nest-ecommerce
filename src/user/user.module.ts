@@ -1,4 +1,5 @@
 import {
+  forwardRef,
   MiddlewareConsumer,
   Module,
   NestModule,
@@ -15,7 +16,7 @@ import { UserService } from './user.service';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
-    TransactionModule,
+    forwardRef(() => TransactionModule),
     ProductModule,
   ],
   controllers: [UserController],

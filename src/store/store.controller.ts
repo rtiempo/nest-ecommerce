@@ -9,6 +9,8 @@ import {
 } from '@nestjs/common';
 import { Product } from 'src/product/product.schema';
 import { ProductService } from 'src/product/product.service';
+import { Transaction } from 'src/transaction/transaction.schema';
+import { TransactionService } from 'src/transaction/transaction.service';
 import { CreateStoreDto, UpdateStoreDto } from './dto/store.dto';
 import { Store } from './store.schema';
 import { StoreService } from './store.service';
@@ -18,6 +20,7 @@ export class StoreController {
   constructor(
     private readonly storeService: StoreService,
     private readonly productService: ProductService,
+    private readonly transactionService: TransactionService,
   ) {}
 
   @Get()
@@ -44,6 +47,13 @@ export class StoreController {
     return this.storeService.findByKey(keyword);
   }
 
+  @Get('/:storeId/transactions')
+  getStoreTransactions(
+    @Param('storeId', new ParseUUIDPipe()) storeId: string,
+  ): Promise<Transaction[]> {
+    return this.transactionService.findStoreTransactions(storeId);
+  }
+
   @Post()
   createStore(
     @Body() body: CreateStoreDto,
@@ -59,7 +69,7 @@ export class StoreController {
     @Body() body: UpdateStoreDto,
     @Body('name') name: string,
   ): Promise<Store> {
-    let keys;
+    let keys: string[];
     if (name) {
       keys = name.toLowerCase().split(' ');
     }

@@ -33,6 +33,13 @@ export class UserController {
     return this.userService.findOne(userId);
   }
 
+  @Get('/:userId/transactions')
+  getUserTransactions(
+    @Param('userId', new ParseUUIDPipe()) userId: string,
+  ): Promise<Transaction[]> {
+    return this.transactionService.findUserTransactions(userId);
+  }
+
   @Post()
   createProduct(
     @Body() body: CreateUserDto,

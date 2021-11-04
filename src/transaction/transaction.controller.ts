@@ -14,11 +14,6 @@ import { UpdateTransactionDto } from './dto/transaction.dto';
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
-  @Get()
-  getTransactionss(): Promise<Transaction[]> {
-    return this.transactionService.findAll();
-  }
-
   @Get('/:transactionId')
   getTransactionsById(
     @Param('transactionId', new ParseUUIDPipe()) transactionId: string,

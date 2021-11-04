@@ -47,7 +47,7 @@ export class ProductController {
     @Body('name') name: string,
     @Body() body: UpdateProductDto,
   ): Promise<Product> {
-    let keys;
+    let keys: string[];
     if (name) {
       keys = name.toLowerCase().split(' ');
     }

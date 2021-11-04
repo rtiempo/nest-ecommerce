@@ -19,8 +19,12 @@ export class TransactionService {
     private readonly productService: ProductService,
   ) {}
 
-  async findAll(): Promise<Transaction[]> {
-    return await this.model.find().exec();
+  async findUserTransactions(userId: string): Promise<Transaction[]> {
+    return await this.model.find({ userId: userId }).exec();
+  }
+
+  async findStoreTransactions(storeId: string): Promise<Transaction[]> {
+    return await this.model.find({ 'cart.store': storeId }).exec();
   }
 
   async findOne(productId: string): Promise<Transaction> {
