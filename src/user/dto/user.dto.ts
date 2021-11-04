@@ -1,3 +1,5 @@
+import { Address } from '../user.schema';
+
 export class CreateUserDto {
   name: string;
   contact: number;
@@ -7,5 +9,5 @@ export class CreateUserDto {
 export class UpdateUserDto extends CreateUserDto {
   gender: string;
   birthDate: Date;
-  addresses: string[];
+  addresses: Address[];
 }

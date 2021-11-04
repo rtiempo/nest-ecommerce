@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { Address } from 'src/user/user.schema';
 
 export type StoreDocument = Store & Document;
 
@@ -14,8 +15,8 @@ export class Store {
   @Prop()
   description: string;
 
-  @Prop()
-  address: string;
+  @Prop(Object)
+  address: Address;
 
   @Prop()
   email: string;

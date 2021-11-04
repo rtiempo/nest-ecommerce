@@ -46,7 +46,7 @@
     {
       "name": "That Time I Got Reincarnated As A Store",
       "description": "Kaizoku Ou ni Ore wa Naru",
-      "address": "1-chōme-39-16 Matsubara, Setagaya City, Tokyo 156-0043",
+      "address": { "address": "1-chōme-39-16 Matsubara, Setagaya City, Tokyo 156-0043", "location": { "type": "Point", "coordinates": [35.6321, 139.7975] } },
       "email": "reincarnatedasastore@gmail.com",
       "contact": 9459326193
     },
@@ -54,14 +54,14 @@
       "name": "My Shop Cant Be This Cute",
       "description":
         "Nico Nico-nii~ Anata no Heart ni Nico Nico-nii, Egao todokeru Yazawa Nico Nico~ Nico-nii te oboeteru Love Nico",
-      "address": "2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025",
+      "address": { "address": "2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025", "location": { "type": "Point", "coordinates": [35.6321, 139.7975] } },
       "email": "cantbethiscute@gmail.com",
       "contact": 9347104871
     },
     {
       "name": "A Story About A Shark Reincarnated In A Different World Where There Is No Water",
       "description": "Do you have a minute to talk about our lord and savior Lightning McQueen?! Did you know that Lightning McQueen is the star of several feature films such as Cars, Cars 2, Car 3, Planes: Fire and Rescue, Finding Dory, Toy Story 3, Coco and Ralph breaks the internet? As well as other short film such as Mater and the Ghostlight, Miss Fritter's Racing Skoool, Television program such as Cars Toons, Pixar's Popcorn Cars series voiced by none other than Owen Wilson? He also appears in video games such as Cars: The Video Game, Cars: Radiator Springs Adventures, (not) Kingdom Hearts. Can I interest you in nicknames such as Stinky? He won the Piston Cup.",
-      "address": "3795 Abomachi, Chichibu, Saitama 368-0016",
+      "address": { "address": "3795 Abomachi, Chichibu, Saitama 368-0016", "location": { "type": "Point", "coordinates": [35.6321, 139.7975] } },
       "email": "sharkreincarnated@gmail.com",
       "contact": 9367124173
     }
@@ -74,7 +74,7 @@
       "password": "katoumegumi",
       "gender": "Female", 
       "birthDate": "2000-09-23",
-      "addresses": ["3795 Abomachi, Chichibu, Saitama 368-0016"]
+      "addresses": [{ "address": "3795 Abomachi, Chichibu, Saitama 368-0016", "location": { "type": "Point", "coordinates": [35.6321, 139.7975] } }]
     },
     {
       "name": "Sakurajima Mai",
@@ -83,7 +83,8 @@
       "password": "sakurajimamai",
       "gender": "Female",
       "birthDate": "1999-12-02",
-      "addresses": ["1-chōme-39-16 Matsubara, Setagaya City, Tokyo 156-0043", "2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025"]
+      "addresses": [{ "address": "1-chōme-39-16 Matsubara, Setagaya City, Tokyo 156-0043", "location": { "type": "Point", "coordinates": [35.6321, 139.7975] } }, 
+                    { "address": "2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025", "location": { "type": "Point", "coordinates": [35.6321, 139.7975] } } ]
     },
     {
       "name": "Azusagawa Sakuta",
@@ -92,7 +93,7 @@
       "password": "azusagawasakuta",
       "gender": "Male",
       "birthDate": "2000-04-10",
-      "addresses": ["2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025"]
+      "addresses": [{ "address": "2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025", "location": { "type": "Point", "coordinates": [35.6321, 139.7975] } }]
     }
   ],
   "cartItems": [

@@ -14,19 +14,3 @@ import { StoreService } from './store.service';
   providers: [StoreService],
 })
 export class StoreModule {}
-// export class StoreModule implements NestModule {
-//   configure(consumer: MiddlewareConsumer) {
-//     consumer.apply(ValidStoreMiddleWare).forRoutes({
-//       path: 'stores/:storeId',
-//       method: RequestMethod.GET,
-//     });
-//     consumer.apply(ValidStoreMiddleWare).forRoutes({
-//       path: 'stores/:storeId/search',
-//       method: RequestMethod.GET,
-//     });
-//     consumer.apply(ValidStoreMiddleWare).forRoutes({
-//       path: 'stores/:storeId',
-//       method: RequestMethod.PUT,
-//     });
-//   }
-// }

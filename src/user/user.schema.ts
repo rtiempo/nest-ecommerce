@@ -19,6 +19,24 @@ export class CartItem {
 }
 
 @Schema()
+export class Point {
+  @Prop({ type: String, enum: ['Point'], required: true })
+  type: string;
+
+  @Prop({ type: [Number], required: true })
+  coordinates: number[];
+}
+
+@Schema()
+export class Address {
+  @Prop({ type: String, required: true })
+  address: string;
+
+  @Prop({ type: Point, required: false })
+  location: Point;
+}
+
+@Schema()
 export class User {
   @Prop({ required: true })
   _id: string;
@@ -41,8 +59,8 @@ export class User {
   @Prop({ required: true })
   hash: string;
 
-  @Prop([String])
-  addresses: string[];
+  @Prop([Object])
+  addresses: Address[];
 
   @Prop([Object])
   cart: CartItem[];

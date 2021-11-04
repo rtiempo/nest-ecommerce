@@ -4,12 +4,14 @@ import { v4 as uuid } from 'uuid';
 import { SHA1 } from 'crypto-js';
 import { Model } from 'mongoose';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
-import { CartItem, User, UserDocument } from './user.schema';
+import { Address, CartItem, User, UserDocument } from './user.schema';
+import { ProductService } from 'src/product/product.service';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectModel(User.name) private readonly model: Model<UserDocument>,
+    private readonly productService: ProductService,
   ) {}
 
   async findAll(): Promise<User[]> {
@@ -39,8 +41,37 @@ export class UserService {
       .exec();
   }
 
+  async pushAddress(userId: string, address: Address): Promise<User> {
+    return await this.model
+      .findByIdAndUpdate(
+        userId,
+        { $push: { addresses: address } },
+        { new: true },
+      )
+      .exec();
+  }
+
+  async pullAddress(userId: string, address: string): Promise<User> {
+    return await this.model
+      .findByIdAndUpdate(
+        userId,
+        { $pull: { addresses: { address: address } } },
+        { new: true },
+      )
+      .exec();
+  }
+
+  async setAddress(userId: string, address: Address): Promise<User> {
+    return await this.model
+      .findByIdAndUpdate(
+        userId,
+        { $set: { addresses: address } },
+        { new: true },
+      )
+      .exec();
+  }
+
   async pushToCart(userId: string, payload: CartItem): Promise<User> {
-    console.log({ ...payload });
     return await this.model
       .findByIdAndUpdate(
         userId,

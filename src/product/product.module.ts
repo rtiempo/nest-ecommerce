@@ -13,15 +13,3 @@ import { ProductService } from './product.service';
   exports: [ProductService],
 })
 export class ProductModule {}
-// export class ProductModule implements NestModule {
-//   configure(consumer: MiddlewareConsumer) {
-//     consumer.apply(ValidProductMiddleWare).forRoutes({
-//       path: 'products/:productId',
-//       method: RequestMethod.GET,
-//     });
-//     consumer.apply(ValidProductMiddleWare).forRoutes({
-//       path: 'products/:productId',
-//       method: RequestMethod.PUT,
-//     });
-//   }
-// }
