@@ -24,9 +24,4 @@ export class CreateProductDto {
   description: string;
 }
 
-export class UpdateProductDto {
-  name: string;
-  store: string;
-  price: number;
-  description: string;
-}
+export class UpdateProductDto extends CreateProductDto {}

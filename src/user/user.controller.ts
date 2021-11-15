@@ -59,7 +59,7 @@ export class UserController {
   @Patch('/:userId')
   updateUser(
     @Param('userId', new ParseUUIDPipe()) userId: string,
-    @Body() body: UpdateUserDto,
+    @Body() body: Partial<UpdateUserDto>,
   ): Promise<User> {
     return this.userService.update(userId, body);
   }

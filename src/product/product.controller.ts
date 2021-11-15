@@ -45,7 +45,7 @@ export class ProductController {
   updateProduct(
     @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body('name') name: string,
-    @Body() body: UpdateProductDto,
+    @Body() body: Partial<UpdateProductDto>,
   ): Promise<Product> {
     let keys: string[];
     if (name) {

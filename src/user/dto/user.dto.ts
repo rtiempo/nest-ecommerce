@@ -17,10 +17,7 @@ export class CreateUserDto {
   email: string;
 }
 
-export class UpdateUserDto {
-  name: string;
-  contact: number;
-  email: string;
+export class UpdateUserDto extends CreateUserDto {
   gender: string;
   birthDate: Date;
   addresses: Address[];

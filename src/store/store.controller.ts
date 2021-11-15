@@ -66,7 +66,7 @@ export class StoreController {
   @Patch('/:storeId')
   updateStore(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
-    @Body() body: UpdateStoreDto,
+    @Body() body: Partial<UpdateStoreDto>,
     @Body('name') name: string,
   ): Promise<Store> {
     let keys: string[];
