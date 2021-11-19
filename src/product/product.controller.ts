@@ -36,26 +36,17 @@ export class ProductController {
 
   @Roles(Role.Owner, Role.Worker)
   @Post()
-  createProduct(
-    @Body() body: CreateProductDto,
-    @Body('name') name: string,
-  ): Promise<Product> {
-    const keys = name.toLowerCase().split(' ');
-    return this.productService.create(body, keys);
+  createProduct(@Body() body: CreateProductDto): Promise<Product> {
+    return this.productService.create(body);
   }
 
   @Roles(Role.Owner, Role.Worker)
   @Patch('/:productId')
   updateProduct(
     @Param('productId', new ParseUUIDPipe()) productId: string,
-    @Body('name') name: string,
     @Body() body: Partial<UpdateProductDto>,
   ): Promise<Product> {
-    let keys: string[];
-    if (name) {
-      keys = name.toLowerCase().split(' ');
-    }
-    return this.productService.update(productId, body, keys);
+    return this.productService.update(productId, body);
   }
 
   @Roles(Role.Owner, Role.Worker)

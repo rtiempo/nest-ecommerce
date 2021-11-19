@@ -64,10 +64,8 @@ export class StoreController {
   createStore(
     @Body() body: CreateStoreDto,
     @Body('userId') userId: string,
-    @Body('name') name: string,
   ): Promise<Store> {
-    const keys = name.toLowerCase().split(' ');
-    return this.storeService.create(body, userId, keys);
+    return this.storeService.create(body, userId);
   }
 
   @Roles(Role.Owner)
@@ -75,13 +73,8 @@ export class StoreController {
   updateStore(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
     @Body() body: Partial<UpdateStoreDto>,
-    @Body('name') name: string,
   ): Promise<Store> {
-    let keys: string[];
-    if (name) {
-      keys = name.toLowerCase().split(' ');
-    }
-    return this.storeService.update(storeId, body, keys);
+    return this.storeService.update(storeId, body);
   }
 
   @Roles(Role.Owner)

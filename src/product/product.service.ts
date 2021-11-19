@@ -28,7 +28,8 @@ export class ProductService {
     return await this.model.find({ store: storeId }).exec();
   }
 
-  async create(payload: CreateProductDto, keys: string[]): Promise<Product> {
+  async create(payload: CreateProductDto): Promise<Product> {
+    const keys = payload.name.toLowerCase().split(' ');
     return await new this.model({
       _id: uuid(),
       ...payload,
@@ -40,8 +41,11 @@ export class ProductService {
   async update(
     productId: string,
     payload: Partial<UpdateProductDto>,
-    keys: string[],
   ): Promise<Product> {
+    let keys: string[];
+    if (payload.name) {
+      keys = payload.name.toLowerCase().split(' ');
+    }
     const update = { ...payload, keys: keys };
     return await this.model
       .findByIdAndUpdate(productId, update, { new: true })

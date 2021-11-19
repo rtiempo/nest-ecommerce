@@ -27,11 +27,8 @@ export class StoreService {
     return await this.model.find({ keys: { $all: { ...keys } } }).exec();
   }
 
-  async create(
-    payload: CreateStoreDto,
-    ownerId: string,
-    keys: string[],
-  ): Promise<Store> {
+  async create(payload: CreateStoreDto, ownerId: string): Promise<Store> {
+    const keys = payload.name.toLowerCase().split(' ');
     const id = uuid();
     this.userService.update(ownerId, { role: Role.Owner, storeId: id });
     return await new this.model({
@@ -45,8 +42,11 @@ export class StoreService {
   async update(
     storeId: string,
     payload: Partial<UpdateStoreDto>,
-    keys: string[],
   ): Promise<Store> {
+    let keys: string[];
+    if (payload.name) {
+      keys = payload.name.toLowerCase().split(' ');
+    }
     const update = { ...payload, keys: keys };
     return await this.model
       .findByIdAndUpdate(storeId, update, { new: true })
