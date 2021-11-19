@@ -5,7 +5,7 @@ import { Store, StoreDocument } from './store.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { UserService } from 'src/user/user.service';
-import { User } from 'src/user/user.schema';
+import { Role } from 'src/common/constants/roles/role.enum';
 
 @Injectable()
 export class StoreService {
@@ -33,7 +33,7 @@ export class StoreService {
     keys: string[],
   ): Promise<Store> {
     const id = uuid();
-    this.userService.update(ownerId, { role: 'Owner', storeId: id });
+    this.userService.update(ownerId, { role: Role.Owner, storeId: id });
     return await new this.model({
       _id: id,
       ...payload,

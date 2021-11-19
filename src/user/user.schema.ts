@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { Gender } from 'src/common/constants/gender.enum';
+import { Role } from 'src/common/constants/roles/role.enum';
 
 export type UserDocument = User & Document;
 
@@ -50,7 +52,7 @@ export class User {
   @Prop({ required: true })
   contact: number;
 
-  @Prop({ type: String, enum: ['Male', 'Female', 'Others'] })
+  @Prop({ type: String, enum: Gender })
   gender: string;
 
   @Prop({ required: true })
@@ -68,7 +70,7 @@ export class User {
   @Prop([Object])
   cart: CartItem[];
 
-  @Prop({ type: String, enum: ['Owner', 'Worker', 'Customer'] })
+  @Prop({ type: String, enum: Role })
   role: string;
 
   @Prop()

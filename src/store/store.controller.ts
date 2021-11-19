@@ -7,11 +7,12 @@ import {
   ParseUUIDPipe,
   Patch,
 } from '@nestjs/common';
+import { Roles } from 'src/common/constants/roles/role.decorator';
+import { Role } from 'src/common/constants/roles/role.enum';
 import { Product } from 'src/product/product.schema';
 import { ProductService } from 'src/product/product.service';
 import { Transaction } from 'src/transaction/transaction.schema';
 import { TransactionService } from 'src/transaction/transaction.service';
-import { UpdateUserDto } from 'src/user/dto/user.dto';
 import { User } from 'src/user/user.schema';
 import { UserService } from 'src/user/user.service';
 import { CreateStoreDto, UpdateStoreDto } from './dto/store.dto';
@@ -51,6 +52,7 @@ export class StoreController {
     return this.storeService.findByKey(keyword);
   }
 
+  @Roles(Role.Owner, Role.Worker)
   @Get('/:storeId/transactions')
   getStoreTransactions(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
@@ -68,6 +70,7 @@ export class StoreController {
     return this.storeService.create(body, userId, keys);
   }
 
+  @Roles(Role.Owner)
   @Patch('/:storeId')
   updateStore(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
@@ -81,21 +84,27 @@ export class StoreController {
     return this.storeService.update(storeId, body, keys);
   }
 
+  @Roles(Role.Owner)
   @Patch('/:storeId/addEmployee')
   addEmployee(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
     @Body('userId', new ParseUUIDPipe()) userId: string,
   ): Promise<User> {
-    return this.userService.update(userId, { storeId, role: 'Worker' });
+    return this.userService.update(userId, { storeId, role: Role.Worker });
   }
 
+  @Roles(Role.Owner)
   @Patch('/:storeId/removeEmployee')
   removeEmployee(
     @Body('userId', new ParseUUIDPipe()) userId: string,
   ): Promise<User> {
-    return this.userService.update(userId, { storeId: '', role: 'Customer' });
+    return this.userService.update(userId, {
+      storeId: '',
+      role: Role.Customer,
+    });
   }
 
+  @Roles(Role.Owner)
   @Patch('/:storeId/delete')
   deletestore(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,

@@ -7,6 +7,8 @@ import {
   Patch,
   ParseUUIDPipe,
 } from '@nestjs/common';
+import { Roles } from 'src/common/constants/roles/role.decorator';
+import { Role } from 'src/common/constants/roles/role.enum';
 import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
 import { Product } from './product.schema';
 import { ProductService } from './product.service';
@@ -32,6 +34,7 @@ export class ProductController {
     return this.productService.findByKey(keyword);
   }
 
+  @Roles(Role.Owner, Role.Worker)
   @Post()
   createProduct(
     @Body() body: CreateProductDto,
@@ -41,6 +44,7 @@ export class ProductController {
     return this.productService.create(body, keys);
   }
 
+  @Roles(Role.Owner, Role.Worker)
   @Patch('/:productId')
   updateProduct(
     @Param('productId', new ParseUUIDPipe()) productId: string,
@@ -54,6 +58,7 @@ export class ProductController {
     return this.productService.update(productId, body, keys);
   }
 
+  @Roles(Role.Owner, Role.Worker)
   @Patch('/:productId/delete')
   deleteProduct(
     @Param('productId', new ParseUUIDPipe()) productId: string,
@@ -61,6 +66,7 @@ export class ProductController {
     return this.productService.delete(productId);
   }
 
+  @Roles(Role.Owner, Role.Worker)
   @Patch('/:productId/addVariant')
   pushVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
@@ -69,6 +75,7 @@ export class ProductController {
     return this.productService.pushVariant(productId, variant);
   }
 
+  @Roles(Role.Owner, Role.Worker)
   @Patch('/:productId/pullVariant')
   pullVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
@@ -77,6 +84,7 @@ export class ProductController {
     return this.productService.pullVariant(productId, variant);
   }
 
+  @Roles(Role.Owner, Role.Worker)
   @Patch('/:productId/setVariant')
   setVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
