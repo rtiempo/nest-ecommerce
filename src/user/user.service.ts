@@ -5,13 +5,11 @@ import { SHA1 } from 'crypto-js';
 import { Model } from 'mongoose';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
 import { Address, CartItem, User, UserDocument } from './user.schema';
-import { ProductService } from 'src/product/product.service';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectModel(User.name) private readonly model: Model<UserDocument>,
-    private readonly productService: ProductService,
   ) {}
 
   async findAll(): Promise<User[]> {

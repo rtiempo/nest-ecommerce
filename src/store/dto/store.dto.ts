@@ -19,7 +19,7 @@ export class CreateStoreDto {
   @MinLength(10, {
     message: 'Description is too short',
   })
-  @MaxLength(512, {
+  @MaxLength(768, {
     message: 'Description is too long',
   })
   description: string;

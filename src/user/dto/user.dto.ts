@@ -21,4 +21,6 @@ export class UpdateUserDto extends CreateUserDto {
   gender: string;
   birthDate: Date;
   addresses: Address[];
+  role: string;
+  storeId: string;
 }

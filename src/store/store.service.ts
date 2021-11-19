@@ -4,11 +4,14 @@ import { CreateStoreDto, UpdateStoreDto } from './dto/store.dto';
 import { Store, StoreDocument } from './store.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { UserService } from 'src/user/user.service';
+import { User } from 'src/user/user.schema';
 
 @Injectable()
 export class StoreService {
   constructor(
     @InjectModel(Store.name) private readonly model: Model<StoreDocument>,
+    private readonly userService: UserService,
   ) {}
 
   async findAll(): Promise<Store[]> {
@@ -24,9 +27,15 @@ export class StoreService {
     return await this.model.find({ keys: { $all: { ...keys } } }).exec();
   }
 
-  async create(payload: CreateStoreDto, keys: string[]): Promise<Store> {
+  async create(
+    payload: CreateStoreDto,
+    ownerId: string,
+    keys: string[],
+  ): Promise<Store> {
+    const id = uuid();
+    this.userService.update(ownerId, { role: 'Owner', storeId: id });
     return await new this.model({
-      _id: uuid(),
+      _id: id,
       ...payload,
       keys,
       dateCreated: new Date(),

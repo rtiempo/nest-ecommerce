@@ -68,6 +68,12 @@ export class User {
   @Prop([Object])
   cart: CartItem[];
 
+  @Prop({ type: String, enum: ['Owner', 'Worker', 'Customer'] })
+  role: string;
+
+  @Prop()
+  storeId: string;
+
   @Prop({ required: true })
   dateCreated: Date;
 
