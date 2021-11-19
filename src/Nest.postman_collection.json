@@ -208,7 +208,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"variants\": [{\"name\": \"standard\", \"stock\": 22}]\r\n}",
+							"raw": "{\r\n    \"price\": 5199.99\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -216,7 +216,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/products/1481faa6-fdac-4f62-bccf-945fd92fb4db",
+							"raw": "http://localhost:3000/products/68279408-3329-4207-aa82-b453a45b254a",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -224,7 +224,7 @@
 							"port": "3000",
 							"path": [
 								"products",
-								"1481faa6-fdac-4f62-bccf-945fd92fb4db"
+								"68279408-3329-4207-aa82-b453a45b254a"
 							]
 						}
 					},
@@ -296,7 +296,7 @@
 					"response": []
 				},
 				{
-					"name": "/store/:storeId/transactions",
+					"name": "/stores/:storeId/transactions",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -354,7 +354,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"A Story About A Shark Reincarnated In A Different World Where There Is No Water\",\r\n    \"description\": \"Do you have a minute to talk about our lord and savior Lightning McQueen?! Did you know that Lightning McQueen is the star of several feature films such as Cars, Cars 2, Car 3, Planes: Fire and Rescue, Finding Dory, Toy Story 3, Coco and Ralph breaks the internet? As well as other short film such as Mater and the Ghostlight, Miss Fritter's Racing Skoool, Television program such as Cars Toons, Pixar's Popcorn Cars series voiced by none other than Owen Wilson? He also appears in video games such as Cars: The Video Game, Cars: Radiator Springs Adventures, (not) Kingdom Hearts. Can I interest you in nicknames such as Stinky? He won the Piston Cup.\",\r\n    \"address\": \"3795 Abomachi, Chichibu, Saitama 368-0016\",\r\n    \"email\": \"sharkreincarnated@gmail.com\",\r\n    \"contact\": 9367124173\r\n}",
+							"raw": "{\r\n    \"name\": \"A Story About A Shark Reincarnated In A Different World Where There Is No Water\",\r\n    \"description\": \"Do you have a minute to talk about our lord and savior Lightning McQueen?! Did you know that Lightning McQueen is the star of several feature films such as Cars, Cars 2, Car 3, Planes: Fire and Rescue, Finding Dory, Toy Story 3, Coco and Ralph breaks the internet? As well as other short film such as Mater and the Ghostlight, Miss Fritter's Racing Skoool, Television program such as Cars Toons, Pixar's Popcorn Cars series voiced by none other than Owen Wilson? He also appears in video games such as Cars: The Video Game, Cars: Radiator Springs Adventures, (not) Kingdom Hearts. Can I interest you in nicknames such as Stinky? He won the Piston Cup.\",\r\n    \"address\": \"3795 Abomachi, Chichibu, Saitama 368-0016\",\r\n    \"email\": \"sharkreincarnated@gmail.com\",\r\n    \"contact\": 9367124173,\r\n    \"userId\": \"21747a8b-6694-475a-9ef1-9704a9138740\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -405,6 +405,66 @@
 					"response": []
 				},
 				{
+					"name": "/stores/:storeId/addEmployee",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"68fe523c-f1c8-4055-b896-67a69b151356\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/stores/2734ebec-4268-4a8d-9425-86a2d791a40c/addEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores",
+								"2734ebec-4268-4a8d-9425-86a2d791a40c",
+								"addEmployee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/stores/:storeId/removeEmployee Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"68fe523c-f1c8-4055-b896-67a69b151356\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/stores/2734ebec-4268-4a8d-9425-86a2d791a40c/removeEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"stores",
+								"2734ebec-4268-4a8d-9425-86a2d791a40c",
+								"removeEmployee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "/stores/:storeId/delete",
 					"request": {
 						"method": "PATCH",
@@ -422,15 +482,6 @@
 								"delete"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
 					},
 					"response": []
 				}
@@ -724,7 +775,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"addresses\": [\r\n        { \r\n            \"address\": \"2 Chome-3-1 Shichirigahamahigashi, Kamakura, Kanagawa 248-0025\", \r\n            \"location\": { \r\n                \"type\": \"Point\", \r\n                \"coordinates\": [35.6321, 139.7975] \r\n            } \r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"gender\": \"Male\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
