@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { Roles } from 'src/common/constants/roles/role.decorator';
 import { Role } from 'src/common/constants/roles/role.enum';
+import { routes } from 'src/common/constants/routes';
 import { Product } from 'src/product/product.schema';
 import { ProductService } from 'src/product/product.service';
 import { Transaction } from 'src/transaction/transaction.schema';
@@ -19,7 +20,7 @@ import { CreateStoreDto, UpdateStoreDto } from './dto/store.dto';
 import { Store } from './store.schema';
 import { StoreService } from './store.service';
 
-@Controller('stores')
+@Controller(routes.STORE.INDEX)
 export class StoreController {
   constructor(
     private readonly storeService: StoreService,
@@ -33,14 +34,14 @@ export class StoreController {
     return this.storeService.findAll();
   }
 
-  @Get('/:storeId')
+  @Get(routes.STORE.ID)
   getStoreById(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
   ): Promise<Store> {
     return this.storeService.findOne(storeId);
   }
 
-  @Get('/:storeId/search')
+  @Get(routes.STORE.SEARCH)
   getStoreProducts(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
   ): Promise<Product[]> {
@@ -53,7 +54,7 @@ export class StoreController {
   }
 
   @Roles(Role.Owner, Role.Worker)
-  @Get('/:storeId/transactions')
+  @Get(routes.STORE.TRANSACTIONS)
   getStoreTransactions(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
   ): Promise<Transaction[]> {
@@ -69,7 +70,7 @@ export class StoreController {
   }
 
   @Roles(Role.Owner)
-  @Patch('/:storeId')
+  @Patch(routes.STORE.ID)
   updateStore(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
     @Body() body: Partial<UpdateStoreDto>,
@@ -78,7 +79,7 @@ export class StoreController {
   }
 
   @Roles(Role.Owner)
-  @Patch('/:storeId/addEmployee')
+  @Patch(routes.STORE.ADDEMPLOYEE)
   addEmployee(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
     @Body('userId', new ParseUUIDPipe()) userId: string,
@@ -87,7 +88,7 @@ export class StoreController {
   }
 
   @Roles(Role.Owner)
-  @Patch('/:storeId/removeEmployee')
+  @Patch(routes.STORE.REMOVEEMPLOYEE)
   removeEmployee(
     @Body('userId', new ParseUUIDPipe()) userId: string,
   ): Promise<User> {
@@ -98,7 +99,7 @@ export class StoreController {
   }
 
   @Roles(Role.Owner)
-  @Patch('/:storeId/delete')
+  @Patch(routes.STORE.DELETE)
   deletestore(
     @Param('storeId', new ParseUUIDPipe()) storeId: string,
   ): Promise<Store> {

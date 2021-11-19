@@ -9,19 +9,20 @@ import {
 import { Transaction } from './transaction.schema';
 import { TransactionService } from './transaction.service';
 import { UpdateTransactionDto } from './dto/transaction.dto';
+import { routes } from 'src/common/constants/routes';
 
-@Controller('transactions')
+@Controller(routes.TRANSACTION.INDEX)
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
-  @Get('/:transactionId')
+  @Get(routes.TRANSACTION.ID)
   getTransactionsById(
     @Param('transactionId', new ParseUUIDPipe()) transactionId: string,
   ): Promise<Transaction> {
     return this.transactionService.findOne(transactionId);
   }
 
-  @Patch('/:transactionId')
+  @Patch(routes.TRANSACTION.ID)
   updateTransactions(
     @Param('transactionId', new ParseUUIDPipe()) transactionId: string,
     @Body() body: UpdateTransactionDto,

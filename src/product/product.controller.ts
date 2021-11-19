@@ -9,11 +9,12 @@ import {
 } from '@nestjs/common';
 import { Roles } from 'src/common/constants/roles/role.decorator';
 import { Role } from 'src/common/constants/roles/role.enum';
+import { routes } from 'src/common/constants/routes';
 import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
 import { Product } from './product.schema';
 import { ProductService } from './product.service';
 
-@Controller('products')
+@Controller(routes.PRODUCT.INDEX)
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
@@ -22,7 +23,7 @@ export class ProductController {
     return this.productService.findAll();
   }
 
-  @Get('/:productId')
+  @Get(routes.PRODUCT.ID)
   getProductById(
     @Param('productId', new ParseUUIDPipe()) productId: string,
   ): Promise<Product> {
@@ -41,7 +42,7 @@ export class ProductController {
   }
 
   @Roles(Role.Owner, Role.Worker)
-  @Patch('/:productId')
+  @Patch(routes.PRODUCT.ID)
   updateProduct(
     @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body() body: Partial<UpdateProductDto>,
@@ -50,7 +51,7 @@ export class ProductController {
   }
 
   @Roles(Role.Owner, Role.Worker)
-  @Patch('/:productId/delete')
+  @Patch(routes.PRODUCT.DELETE)
   deleteProduct(
     @Param('productId', new ParseUUIDPipe()) productId: string,
   ): Promise<Product> {
@@ -58,7 +59,7 @@ export class ProductController {
   }
 
   @Roles(Role.Owner, Role.Worker)
-  @Patch('/:productId/addVariant')
+  @Patch(routes.PRODUCT.ADDVARIANT)
   pushVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body('variant') variant: { name: string; stock: number },
@@ -67,7 +68,7 @@ export class ProductController {
   }
 
   @Roles(Role.Owner, Role.Worker)
-  @Patch('/:productId/pullVariant')
+  @Patch(routes.PRODUCT.PULLVARIANT)
   pullVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body('variant') variant: string,
@@ -76,7 +77,7 @@ export class ProductController {
   }
 
   @Roles(Role.Owner, Role.Worker)
-  @Patch('/:productId/setVariant')
+  @Patch(routes.PRODUCT.SETVARIANT)
   setVariant(
     @Param('productId', new ParseUUIDPipe()) productId: string,
     @Body('variant') variant: { name: string; stock: number },

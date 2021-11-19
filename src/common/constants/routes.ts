@@ -1,0 +1,35 @@
+export const routes = {
+  PRODUCT: {
+    INDEX: 'products',
+    ID: ':productId',
+    DELETE: ':productId/delete',
+    ADDVARIANT: ':productId/addVariant',
+    PULLVARIANT: ':productId/pullVariant',
+    SETVARIANT: ':productId/setVariant',
+  },
+  STORE: {
+    INDEX: 'stores',
+    ID: ':storeId',
+    SEARCH: ':storeId/search',
+    TRANSACTIONS: ':storeId/transactions',
+    ADDEMPLOYEE: ':storeId/addEmployee',
+    REMOVEEMPLOYEE: ':storeId/removeEmployee',
+    DELETE: ':storeId/delete',
+  },
+  TRANSACTION: {
+    INDEX: 'transactions',
+    ID: ':transactionId',
+  },
+  USER: {
+    INDEX: 'users',
+    ID: ':userId',
+    TRANSACTIONS: ':userId/transactions',
+    CHECKOUT: ':userId/checkout',
+    DELETE: ':userId/delete',
+    ADDADDRESS: ':userId/addAddress',
+    PULLADDRESS: ':userId/pullAddress',
+    SETADDRESS: ':userId/setAddress',
+    PUSHTOCART: ':userId/pushToCart',
+    PULLFROMCART: ':userId/pullFromCart',
+  },
+};

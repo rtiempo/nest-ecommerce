@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { routes } from 'src/common/constants/routes';
 import { CreateTransactiontDto } from 'src/transaction/dto/transaction.dto';
 import { Transaction } from 'src/transaction/transaction.schema';
 import { TransactionService } from 'src/transaction/transaction.service';
@@ -14,7 +15,7 @@ import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
 import { Address, CartItem, User } from './user.schema';
 import { UserService } from './user.service';
 
-@Controller('users')
+@Controller(routes.USER.INDEX)
 export class UserController {
   constructor(
     private readonly userService: UserService,
@@ -26,14 +27,14 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get('/:userId')
+  @Get(routes.USER.ID)
   getUserById(
     @Param('userId', new ParseUUIDPipe()) userId: string,
   ): Promise<User> {
     return this.userService.findOne(userId);
   }
 
-  @Get('/:userId/transactions')
+  @Get(routes.USER.TRANSACTIONS)
   getUserTransactions(
     @Param('userId', new ParseUUIDPipe()) userId: string,
   ): Promise<Transaction[]> {
@@ -48,7 +49,7 @@ export class UserController {
     return this.userService.create(body, pass);
   }
 
-  @Post('/:userId/checkout')
+  @Post(routes.USER.CHECKOUT)
   checkout(
     @Param('userId', new ParseUUIDPipe()) userId: string,
     @Body() body: CreateTransactiontDto,
@@ -56,7 +57,7 @@ export class UserController {
     return this.transactionService.create(userId, body);
   }
 
-  @Patch('/:userId')
+  @Patch(routes.USER.ID)
   updateUser(
     @Param('userId', new ParseUUIDPipe()) userId: string,
     @Body() body: Partial<UpdateUserDto>,
@@ -64,14 +65,14 @@ export class UserController {
     return this.userService.update(userId, body);
   }
 
-  @Patch('/:userId/delete')
+  @Patch(routes.USER.DELETE)
   deleteUser(
     @Param('userId', new ParseUUIDPipe()) userId: string,
   ): Promise<User> {
     return this.userService.delete(userId);
   }
 
-  @Patch('/:userId/addAddress')
+  @Patch(routes.USER.ADDADDRESS)
   pushAddress(
     @Param('userId', new ParseUUIDPipe()) userId: string,
     @Body() body: Address,
@@ -79,7 +80,7 @@ export class UserController {
     return this.userService.pushAddress(userId, body);
   }
 
-  @Patch('/:userId/pullAddress')
+  @Patch(routes.USER.PULLADDRESS)
   pullAddress(
     @Param('userId', new ParseUUIDPipe()) userId: string,
     @Body('address') address: string,
@@ -87,7 +88,7 @@ export class UserController {
     return this.userService.pullAddress(userId, address);
   }
 
-  @Patch('/:userId/setAddress')
+  @Patch(routes.USER.SETADDRESS)
   setAddress(
     @Param('userId', new ParseUUIDPipe()) userId: string,
     @Body() body: Address,
@@ -95,7 +96,7 @@ export class UserController {
     return this.userService.setAddress(userId, body);
   }
 
-  @Patch('/:userId/pushToCart')
+  @Patch(routes.USER.PUSHTOCART)
   pushToCart(
     @Param('userId', new ParseUUIDPipe()) userId: string,
     @Body('item') item: CartItem,
@@ -103,7 +104,7 @@ export class UserController {
     return this.userService.pushToCart(userId, item);
   }
 
-  @Patch('/:userId/pullFromCart')
+  @Patch(routes.USER.PULLFROMCART)
   pullFromCart(
     @Param('userId', new ParseUUIDPipe()) userId: string,
     @Body('productId') productId: string,
